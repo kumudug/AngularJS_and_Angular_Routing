@@ -4,8 +4,8 @@ angular.
   module('phonecatApp').
   config(['$locationProvider' ,'$routeProvider',
     function config($locationProvider: angular.ILocationProvider, $routeProvider: angular.route.IRouteProvider) {
-      $locationProvider.hashPrefix('!');
-
+      //$locationProvider.hashPrefix('!');
+      $locationProvider.html5Mode(true);
       $routeProvider.
         when('/phones', {
           template: '<phone-list></phone-list>'
