@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var helpers = require('./config/helpers');
 var webpack = require('webpack');
 
@@ -32,23 +33,34 @@ module.exports = {
                     }, 'angular2-template-loader'
                 ]
             },
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                loader: "babel-loader"
-            },
+            // {
+            //     test: /\.js$/,
+            //     exclude: /node_modules/,
+            //     loader: "babel-loader"
+            // },
             {
                 test: /\.html$/,
                 exclude: /node_modules/,
                 loader: "html-loader"
             },
+            // {
+            //     test: /\.css$/,
+            //     exclude: helpers.root('app', 'heroes'),
+            //     loader: ExtractTextPlugin.extract({ fallbackLoader: 'style-loader', loader: 'css-loader?sourceMap' })
+            // },
             {
                 test: /\.css$/,
+                exclude: helpers.root('app', 'heroes'),
                 use: ['style-loader', 'css-loader?sourceMap,minimize']
             },
-            { 
-                test: /\.(png|woff|woff2|eot|ttf|svg)$/, 
-                loader: 'url-loader?limit=100000' 
+            {
+                test: /\.css$/,
+                include: helpers.root('app', 'heroes'),
+                loader: 'raw-loader'
+            },
+            {
+                test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+                loader: 'url-loader?limit=100000'
             }
             //,
             // { test: /\.(json)$/,
