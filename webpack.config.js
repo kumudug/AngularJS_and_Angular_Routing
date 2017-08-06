@@ -6,8 +6,8 @@ var webpack = require('webpack');
 
 module.exports = {
     entry: {
-        'appAngularJS': './app/index.ts',
-        'appAngular': './app/main.ts',
+        'appAngularJS': './app/phone_cat/index.ts',
+        'appAngular': './app/heroes/main.ts',
     },
     devtool: 'cheap-module-eval-source-map',
     devServer: {
@@ -86,8 +86,8 @@ module.exports = {
         }),
         new CopyWebpackPlugin([
             // Copy directory contents to {output}/to/directory/
-            { from: 'app/phones', to: 'phones' },
-            { from: 'app/img/phones', to: 'img/phones' },
+            { from: 'app/phone_cat/phones', to: 'phones' },
+            { from: 'app/phone_cat/img/phones', to: 'img/phones' },
         ]),
         new webpack.ProvidePlugin({
             jQuery: 'jquery',
