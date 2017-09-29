@@ -13,6 +13,12 @@ angular.
         when('/phones/:phoneId', {
           template: '<phone-detail></phone-detail>'
         }).
+        when('/dashboard', {
+        }).
+        when('/detail/:id', {
+        }).
+        when('/heroes', {
+        }).
         otherwise({
           template: '<phone-list></phone-list>'
         });

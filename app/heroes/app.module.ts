@@ -13,10 +13,15 @@ import { AppRoutingModule } from './app-routing.module';
 
 class Ng1Ng2UrlHandlingStrategy implements UrlHandlingStrategy {
   //shouldProcessUrl(url) { return url.toString().startsWith("/settings"); }
-  shouldProcessUrl(url) { 
-    var temp = url.toString().includes("/heroes"); 
-    console.log(url.toString() + ' - ' + temp);
-    return temp;
+  private static readonly ngPaths = [
+    '/dashboard',
+    '/detail/',
+    '/heroes'
+  ];
+  shouldProcessUrl(url) {
+    var shouldProcess = Ng1Ng2UrlHandlingStrategy.ngPaths.findIndex(x => url.toString().includes(x)) >= 0;
+    console.log(`Should process ${url.toString()} - ${shouldProcess}`);
+    return shouldProcess;
   }
   extract(url) { return url; }
   merge(url, whole) { return url; }
